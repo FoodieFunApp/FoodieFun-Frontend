@@ -1,10 +1,13 @@
 import React from 'react';
 import {Form, FormGroup, Label, Input, Button, FormText} from 'reactstrap';
+import Navigation from './Navigation.js';
 
 function SignUp () {
     return(
         <div className="sign-up">
-            <Form className="sign-up-form">
+            <Navigation/>
+            <h1>Create Your Account To Get Started</h1>
+            <Form className="form sign-up-form">
                 <FormGroup>
                     <Label>Username</Label>
                     <Input type="string" name="username"/>
@@ -13,6 +16,7 @@ function SignUp () {
                     <Label>Password</Label>
                     <Input type="string" name="password"/>
                 </FormGroup>
+                <Button>Create Account</Button>
             </Form>
         </div>
     )
