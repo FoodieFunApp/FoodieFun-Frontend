@@ -1,5 +1,6 @@
 import React from 'react';
 import AddReview from './AddReview.js';
+import {Link} from 'react-router-dom';
 
 function ProtectedNavigation () {
     return(
