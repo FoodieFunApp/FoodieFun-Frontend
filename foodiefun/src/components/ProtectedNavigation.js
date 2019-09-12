@@ -1,6 +1,5 @@
 import React from 'react';
-import AddReview from './AddReview.js';
-import Link from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 function ProtectedNavigation() {
     return (
@@ -13,7 +12,8 @@ function ProtectedNavigation() {
             </Link>
 
             <div className="protected-navigation-links">
-                <AddReview />
+                <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                <NavLink className="nav-link" to="/addreview">Add Review</NavLink>
             </div>
         </div>
     )
