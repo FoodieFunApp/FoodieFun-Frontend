@@ -16,9 +16,8 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/register" component={SignUp} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/dashboard" component={UserDashboard} />
         <Route exact path="/addreview" component={AddReview} />
-        <ProtectedRoute exact path="/app" component={UserDashboard} />
+        <ProtectedRoute exact path="/dashboard" component={UserDashboard} />
         <Route exact path="*" component={() => "404 Not Found"} />
       </Switch>
 
