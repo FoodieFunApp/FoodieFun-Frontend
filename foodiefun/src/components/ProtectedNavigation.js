@@ -1,12 +1,10 @@
 import React from 'react';
-import AddReview from './AddReview.js';
-import {Link} from 'react-router-dom';
-import {Button} from 'reactstrap';
+import { Link, NavLink } from 'react-router-dom';
 
 function ProtectedNavigation() {
     return (
         <div className="protected-navigation">
-            <Link to="/app">
+            <Link to="/dashboard">
                 <div className="logo-box">
                     <img alt="sunnysideupeggspic" src="https://img.icons8.com/cotton/64/000000/sunny-side-up-eggs--v2.png" />
                     <h1>FoodieFun</h1>
@@ -14,7 +12,8 @@ function ProtectedNavigation() {
             </Link>
 
             <div className="protected-navigation-links">
-                <Link to="/add-review"><Button>+ Add Review</Button></Link>
+                <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                <NavLink className="nav-link" to="/addreview">Add Review</NavLink>
             </div>
         </div>
     )
