@@ -20,24 +20,26 @@ class Login extends React.Component {
 
     submitHandler = event => {
         event.preventDefault();
-        axios.post('https://foodie-fun-backend.herokuapp.com/api/auth/login', {
-            username: this.state.username,
-            password: this.state.password
-        })
-        .then(res => {
-            window.localStorage.setItem('token', res.token);
-            this.setState({
-                loggedIn: true
+        axios
+            //.post('https://foodie-fun-backend.herokuapp.com/api/auth/login', {
+            .post(`http://localhost:9000/api/auth/login`, {
+                username: this.state.username,
+                password: this.state.password
             })
-        })
-        .catch(err => this.setState({
-            error: true
-        }))
+            .then(res => {
+                window.localStorage.setItem('token', res.data.token);
+                this.setState({
+                    loggedIn: true
+                })
+            })
+            .catch(err => this.setState({
+                error: true
+            }))
     }
 
     render() {
         if(this.state.loggedIn === true) {
-            return <Redirect to='/dashboard'/>
+            return <Redirect to='/app'/>
         } else {
             return(
             <div className="login">
