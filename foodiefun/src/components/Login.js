@@ -3,6 +3,7 @@ import {Form, FormGroup, Label, Input, Button, FormText} from 'reactstrap';
 import Navigation from './Navigation.js';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 class Login extends React.Component {
     state = {
@@ -28,6 +29,8 @@ class Login extends React.Component {
             })
             .then(res => {
                 window.localStorage.setItem('token', res.data.token);
+                const username = jwt_decode(localStorage.getItem('token')).username;
+                window.localStorage.setItem('username', username);
                 this.setState({
                     loggedIn: true
                 })
@@ -39,7 +42,7 @@ class Login extends React.Component {
 
     render() {
         if(this.state.loggedIn === true) {
-            return <Redirect to='/app'/>
+            return <Redirect to='/dashboard'/>
         } else {
             return(
             <div className="login">

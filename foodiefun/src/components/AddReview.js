@@ -1,23 +1,23 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button, FormText } from 'reactstrap';
 import ProtectedNavigation from './ProtectedNavigation.js';
-import axios from 'axios';
+import {axiosWithAuth} from './axiosWithAuth.js';
 import {Redirect} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
 class AddReview extends React.Component {
     state = {
         review: {
-            "restaurant-name": "Ito",
-            "restaurant-type": "",
-            "item-name": "",
+            "restaurantName": "Ito",
+            "restaurantType": "",
+            "itemName": "",
             "price": 0,
-            "visit-date": "",
-            "wait-time": "0min",
+            "visitDate": "",
+            "waitTime": "0min",
             "rating": 0,
             "comments": "",
-            "photo-url": "",
-            "user-id": jwt_decode(localStorage.getItem('token')).userId
+            "photoUrl": "",
+            "userId": jwt_decode(localStorage.getItem('token')).userId
         },
         userId: jwt_decode(localStorage.getItem('token')).userId,
         error: false,
@@ -26,22 +26,8 @@ class AddReview extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        axios
-            .post(`http://localhost:9000/api/users/${this.state.userId}/reviews`,
-            //this.state.review
-                {
-                    "restaurant-name": "Ito Ramen",
-                    "restaurant-type": "Japanese",
-                    "item-name": "Tokyo Spicy Ramen",
-                    "price": 13,
-                    "visit-date": "09-10-2019",
-                    "wait-time": "0min",
-                    "rating": 5,
-                    "comments": "Best Ramen in San Antonio",
-                    "photo-url": "URL",
-                    "user-id": 4
-                }
-            )
+        axiosWithAuth()
+            .post(`http://localhost:9000/api/users/${this.state.userId}/reviews`, this.state.review)
             .then(res => this.setState({
                 redirect: true
             }))

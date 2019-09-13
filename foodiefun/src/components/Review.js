@@ -3,7 +3,7 @@ import React from 'react';
 function Review(props) {
     return (
         <div className="review">
-            {this.props.review}
+            {props.review.restaurantName}
         </div>
     )
 }

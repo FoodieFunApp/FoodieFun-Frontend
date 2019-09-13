@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import {axiosWithAuth} from './axiosWithAuth.js';
 import Review from './Review.js';
 import jwt_decode from 'jwt-decode';
 
@@ -10,7 +10,8 @@ class ReviewList extends React.Component {
     }
 
     componentDidMount() {
-        axios
+  
+        axiosWithAuth()
             //.get(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews`)
             .get(`http://localhost:9000/api/users/${this.state.userId}/reviews`)
             .then(res => this.setState({
