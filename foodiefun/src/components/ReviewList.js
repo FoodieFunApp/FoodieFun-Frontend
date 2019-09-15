@@ -9,6 +9,12 @@ class ReviewList extends React.Component {
         userId: jwt_decode(localStorage.getItem('token')).userId,
     }
 
+    updateList = newList => {
+        this.setState({
+            reviewList: newList
+        })
+    }
+
     componentDidMount() {
   
         axiosWithAuth()
@@ -24,7 +30,7 @@ class ReviewList extends React.Component {
         return (
             <div className="review-list">
                 {this.state.reviewList.map(review => {
-                    return <Review review={review}/>
+                    return <Review review={review} reviewList={this.state.reviewList} userId={this.state.userId} updateList={this.updateList}/>
                 })}
             </div>
         )

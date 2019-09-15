@@ -3,6 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 function ProtectedNavigation() {
 
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+    }
+
     return (
         <div className="protected-navigation">
             <Link to="/dashboard">
@@ -13,7 +18,7 @@ function ProtectedNavigation() {
             </Link>
 
             <div className="protected-navigation-links">
-                <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                <NavLink className="nav-link" to="/login" onClick={logout}>Logout</NavLink>
                 <NavLink className="nav-link" to="/addreview">Add Review</NavLink>
             </div>
         </div>

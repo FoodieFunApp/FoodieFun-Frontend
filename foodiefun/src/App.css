@@ -83,3 +83,33 @@ a {
 .nav-link {
   margin-left: 20px;
 }
+
+.protected-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hero img {
+  width: 100%;
+  height: 900px;
+  position: center;
+  object-fit: cover;
+}
+
+.team {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 50px;
+}
+
+.team-member img {
+  width: 300px;
+  height: auto;
+}
+
+.review {
+  border: 1px black solid;
+  width: 200px;
+}
