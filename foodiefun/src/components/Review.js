@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import { axiosWithAuth } from './axiosWithAuth';
 
 function Review(props) {
@@ -18,7 +17,7 @@ function Review(props) {
             <p>{restaurantName}</p>
             <p>{restaurantType}</p>
             <img src={photoUrl} />
-            <Link to="/update-review">Update Review</Link>
+            <button onClick={() => props.openUpdateModal(props.review)}>Update Review</button>
             <button onClick={() => deleteReview(props.userId, props.review.id)}>Delete Review</button>
         </div>
     )

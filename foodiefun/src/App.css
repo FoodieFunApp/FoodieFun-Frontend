@@ -113,3 +113,17 @@ a {
   border: 1px black solid;
   width: 200px;
 }
+
+.update-review {
+  position: fixed;
+  top: 50px;
+  left: 20%;
+  right: 20%;
+  bottom: 50px;
+  border: 1px black solid;
+  background-color: white;
+}
+
+.hidden {
+  display: none
+}
