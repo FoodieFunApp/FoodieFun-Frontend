@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 class AddReview extends React.Component {
     state = {
         review: {
-            "restaurantName": "Ito",
+            "restaurantName": "",
             "restaurantType": "",
             "itemName": "",
             "price": 0,
@@ -27,7 +27,7 @@ class AddReview extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-            .post(`http://localhost:9000/api/users/${this.state.userId}/reviews`, this.state.review)
+            .post('https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews', this.state.review)
             .then(res => this.setState({
                 redirect: true
             }))
@@ -50,7 +50,7 @@ class AddReview extends React.Component {
 
     render() {
         if(this.state.redirect === true) {
-            return <Redirect to="/app" />            
+            return <Redirect to="/dashboard" />            
         } else {
             return (
             <div className="add-review">
@@ -59,11 +59,11 @@ class AddReview extends React.Component {
                 <Form className="form" onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label>Restaurant Name</Label>
-                        <Input type="string" name="restaurant-name" onChange={this.handleChange} required/>
+                        <Input type="string" name="restaurantName" onChange={this.handleChange} required/>
                     </FormGroup>
                     <FormGroup>
                         <Label>Restaurant Type</Label>
-                        <Input type="select" name="restaurant-type" onChange={this.handleChange} required>
+                        <Input type="select" name="restaurantType" onChange={this.handleChange} required>
                             <option selected disabled></option>
                             <option>Italian</option>
                             <option>Mexican</option>
@@ -72,7 +72,7 @@ class AddReview extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label>Item Name</Label>
-                        <Input type="string" name="item-name" onChange={this.handleChange} required/>
+                        <Input type="string" name="itemName" onChange={this.handleChange} required/>
                     </FormGroup>
                     <FormGroup>
                         <Label>Price</Label>
@@ -80,11 +80,11 @@ class AddReview extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label>Visit Date</Label>
-                        <Input type="date" name="visit-date" onChange={this.handleChange} required/>
+                        <Input type="date" name="visitDate" onChange={this.handleChange} required/>
                     </FormGroup>
                     <FormGroup>
                         <Label>Wait Time</Label>
-                        <Input type="select" name="wait-time" onChange={this.handleChange} required>
+                        <Input type="select" name="waitTime" onChange={this.handleChange} required>
                             <option defaultValue>0min</option>
                             <option>15min</option>
                             <option>30min</option>
@@ -109,7 +109,7 @@ class AddReview extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label>Upload Photo</Label>
-                        <Input type="file" name="photo-url" onChange={this.handleChange} />
+                        <Input type="file" name="photoUrl" onChange={this.handleChange} />
                     </FormGroup>
                     <Button>Add Review</Button>
                 </Form>

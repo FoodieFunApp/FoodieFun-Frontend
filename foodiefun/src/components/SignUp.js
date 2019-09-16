@@ -22,8 +22,7 @@ export default class SignUp extends React.Component {
         }
 
         axios
-            //.post(`https://foodie-fun-backend.herokuapp.com/api/auth/register`, user)
-            .post(`http://localhost:9000/api/auth/register`, user)
+            .post(`https://foodie-fun-backend.herokuapp.com/api/auth/register`, user)
             .then(res => 
                 this.setState({
                     registered: true
