@@ -46,8 +46,7 @@ class UpdateReview extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-            //.put('https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews/${this.state.reviewId}', this.state.review)
-            .put(`http://localhost:9000/api/users/${this.state.userId}/reviews/${this.props.activeReview.id}`, this.state.review)
+            .put(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews/${this.props.activeReivew.id}`, this.state.review)
             .then(res => {
                 this.props.updateList(res.data.reviewList);
                 const UpdateModal = document.querySelector('#update-review');
@@ -70,9 +69,15 @@ class UpdateReview extends React.Component {
         })
     }
 
+    toggleModal = () => {
+        const UpdateModal = document.querySelector('#update-review');
+        UpdateModal.classList.toggle("hidden");
+    }
+
     render() {
         return (
         <div className="update-review hidden" id="update-review">
+            <p style={{textAlign: "right", marginRight: "10px"}} onClick={() => this.toggleModal()}>X</p>
             <h1>Update Review</h1>
             <Form className="form" onSubmit={this.handleSubmit}>
                 <FormGroup>

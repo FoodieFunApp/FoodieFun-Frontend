@@ -34,8 +34,7 @@ class ReviewList extends React.Component {
 
     componentDidMount() {
         axiosWithAuth()
-            //.get(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews`)
-            .get(`http://localhost:9000/api/users/${this.state.userId}/reviews`)
+            .get(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews`)
             .then(res => this.setState({
                 reviewList: res.data
             }))

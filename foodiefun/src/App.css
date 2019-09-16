@@ -109,6 +109,14 @@ a {
   height: auto;
 }
 
+.review-list {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
 .review {
   border: 1px black solid;
   width: 200px;

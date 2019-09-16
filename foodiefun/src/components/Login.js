@@ -22,8 +22,7 @@ class Login extends React.Component {
     submitHandler = event => {
         event.preventDefault();
         axios
-            //.post('https://foodie-fun-backend.herokuapp.com/api/auth/login', {
-            .post(`http://localhost:9000/api/auth/login`, {
+            .post('https://foodie-fun-backend.herokuapp.com/api/auth/login', {
                 username: this.state.username,
                 password: this.state.password
             })

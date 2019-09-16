@@ -6,8 +6,7 @@ function Review(props) {
 
     const deleteReview = (userId, reviewId) => {
         axiosWithAuth()
-            //.delete('https://foodie-fun-backend.herokuapp.com/api/users/${userId}/reviews/${reviewId}`)
-            .delete(`http://localhost:9000/api/users/${userId}/reviews/${reviewId}`)
+            .delete(`https://foodie-fun-backend.herokuapp.com/api/users/${userId}/reviews/${reviewId}`)
             .then(res => props.updateList(res.data.reviewList))
             .catch(err => console.log(err))
     }

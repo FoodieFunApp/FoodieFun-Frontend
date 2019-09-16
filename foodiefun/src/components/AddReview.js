@@ -27,8 +27,7 @@ class AddReview extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-            //.post('https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews', this.state.review)
-            .post(`http://localhost:9000/api/users/${this.state.userId}/reviews`, this.state.review)
+            .post('https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews', this.state.review)
             .then(res => this.setState({
                 redirect: true
             }))
