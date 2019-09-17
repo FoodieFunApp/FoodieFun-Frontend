@@ -24,6 +24,7 @@ class UpdateReview extends React.Component {
             },
             userId: jwt_decode(localStorage.getItem('token')).userId,
             error: false,
+            activeReviewId: undefined
         }
     }
 
@@ -39,14 +40,15 @@ class UpdateReview extends React.Component {
                 "rating": activeReview.rating,
                 "comments": activeReview.comments,
                 "photoUrl": activeReview.photoUrl
-            }
+            },
+            activeReviewId: activeReview.id
         })
       }
 
     handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-            .put(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews/${this.props.activeReivew.id}`, this.state.review)
+            .put(`https://foodie-fun-backend.herokuapp.com/api/users/${this.state.userId}/reviews/${this.state.activeReviewId}`, this.state.review)
             .then(res => {
                 this.props.updateList(res.data.reviewList);
                 const UpdateModal = document.querySelector('#update-review');
